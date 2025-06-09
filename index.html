@@ -31,16 +31,37 @@
       margin-bottom: 1rem;
     }
 
-    input[type="password"] {
+    .input-group {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    input[type="password"],
+    input[type="text"] {
       padding: 0.75rem;
       width: 100%;
       border: none;
       border-radius: 8px;
-      margin-bottom: 1rem;
       font-size: 1rem;
+      box-sizing: border-box;
     }
 
-    button {
+    .toggle-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: #3b82f6;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.9rem;
+      padding: 0;
+    }
+
+    button[type="submit"] {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
       border: none;
@@ -49,9 +70,10 @@
       color: white;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      width: 100%;
     }
 
-    button:hover {
+    button[type="submit"]:hover {
       background-color: #2563eb;
     }
 
@@ -72,7 +94,10 @@
   <div class="container">
     <h1>Welcome to the Worship Hub</h1>
     <form onsubmit="return checkPassword()">
-      <input type="password" id="password" placeholder="Enter password" required />
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Enter password" required />
+        <button type="button" class="toggle-btn" onclick="togglePassword()">Show</button>
+      </div>
       <button type="submit">Enter</button>
       <div class="error" id="errorMsg"></div>
     </form>
@@ -83,7 +108,7 @@
 
   <script>
     const PASSWORD = "romans12:1"; // Replace with your actual password
-    const REDIRECT_URL = "https://www.notion.so/Life-City-Worship-Volunteer-Hub-1e7c88dcb985804ab208eb8181fecb2d?source=copy_link"; // Replace with your Notion page URL
+    const REDIRECT_URL = "https://www.notion.so/Life-City-Worship-Volunteer-Hub-1e7c88dcb985804ab208eb8181fecb2d"; // Replace with your Notion page URL
 
     function checkPassword() {
       const input = document.getElementById('password').value;
@@ -93,6 +118,18 @@
       } else {
         document.getElementById('errorMsg').textContent = "Incorrect password. Please try again.";
         return false;
+      }
+    }
+
+    function togglePassword() {
+      const pwdInput = document.getElementById('password');
+      const toggleBtn = document.querySelector('.toggle-btn');
+      if (pwdInput.type === "password") {
+        pwdInput.type = "text";
+        toggleBtn.textContent = "Hide";
+      } else {
+        pwdInput.type = "password";
+        toggleBtn.textContent = "Show";
       }
     }
   </script>
