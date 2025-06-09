@@ -3,162 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Worship Hub Login</title>
+  <title>Worship Hub Access</title>
   <style>
-    :root {
-      --bg-color-dark: #0d1b2a;
-      --text-color-dark: #ffffff;
-      --input-bg-dark: #1b263b;
-      --input-border-dark: #415a77;
-
-      --bg-color-light: #f4f4f4;
-      --text-color-light: #111111;
-      --input-bg-light: #ffffff;
-      --input-border-light: #cccccc;
-    }
-
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: var(--bg-color-dark);
-      color: var(--text-color-dark);
-      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(to bottom right, #111827, #1f2937);
+      color: white;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
 
     .container {
-      text-align: center;
-      width: 90%;
+      background: #1f2937;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      width: 100%;
       max-width: 400px;
-    }
-
-    .logo img {
-      width: 180px;
-      margin-bottom: 1rem;
-      transition: opacity 0.3s;
+      text-align: center;
     }
 
     h1 {
+      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
 
-    input[type="password"] {
-      padding: 12px;
-      font-size: 1rem;
+    .input-group {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+      padding: 0.75rem;
       width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
       box-sizing: border-box;
-      margin-bottom: 10px;
-      border: 1px solid var(--input-border-dark);
-      background-color: var(--input-bg-dark);
-      color: var(--text-color-dark);
-      border-radius: 6px;
-      transition: background-color 0.3s, border-color 0.3s;
     }
 
-    .toggle-container {
-      margin-top: 20px;
-    }
-
-    .mode-toggle {
-      padding: 8px 16px;
-      background: none;
-      border: 1px solid currentColor;
-      border-radius: 4px;
+    .toggle-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: #3b82f6;
+      font-weight: 600;
       cursor: pointer;
+      user-select: none;
+      font-size: 0.9rem;
+      padding: 0;
+    }
+
+    button[type="submit"] {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #3b82f6;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2563eb;
+    }
+
+    .error {
+      margin-top: 1rem;
+      color: #f87171;
       font-size: 0.9rem;
     }
 
-    .show-password {
-      font-size: 0.8rem;
-      display: block;
-      margin-top: 5px;
-    }
-
-    .submit-btn {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      background-color: #778da9;
-      border: none;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    /* Light Mode */
-    body.light {
-      background-color: var(--bg-color-light);
-      color: var(--text-color-light);
-    }
-
-    body.light input[type="password"] {
-      background-color: var(--input-bg-light);
-      color: var(--text-color-light);
-      border-color: var(--input-border-light);
-    }
-
-    .logo-dark {
-      display: block;
-    }
-
-    .logo-light {
-      display: none;
-    }
-
-    body.light .logo-dark {
-      display: none;
-    }
-
-    body.light .logo-light {
-      display: block;
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo">
-      <img src="logo-white.svg" alt="LC Logo Dark" class="logo-dark" />
-      <img src="logo-black.svg" alt="LC Logo Light" class="logo-light" />
-    </div>
-
     <h1>Welcome to the Worship Hub</h1>
-
-    <form onsubmit="return checkPassword(event)">
-      <input type="password" id="password" placeholder="Enter password" />
-      <label class="show-password">
-        <input type="checkbox" onclick="togglePassword()"> Show password
-      </label>
-      <button type="submit" class="submit-btn">Enter</button>
+    <form onsubmit="return checkPassword()">
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Enter password" required />
+        <button type="button" class="toggle-btn" onclick="togglePassword()">Show</button>
+      </div>
+      <button type="submit">Enter</button>
+      <div class="error" id="errorMsg"></div>
     </form>
-
-    <div class="toggle-container">
-      <button class="mode-toggle" onclick="toggleMode()">Toggle Light/Dark Mode</button>
+    <div class="footer">
+      © Life City Worship Team
     </div>
   </div>
 
   <script>
-    const correctPassword = "romans12:1"; // 🔒 CHANGE THIS TO YOUR PASSWORD
-    const redirectURL = "https://www.notion.so/Life-City-Worship-Volunteer-Hub-1e7c88dcb985804ab208eb8181fecb2d"; // 🌐 CHANGE TO YOUR REDIRECT URL
+    const PASSWORD = "romans12:1"; // Replace with your actual password
+    const REDIRECT_URL = "https://www.notion.so/Life-City-Worship-Volunteer-Hub-1e7c88dcb985804ab208eb8181fecb2d"; // Replace with your Notion page URL
+
+    function checkPassword() {
+      const input = document.getElementById('password').value;
+      if (input === PASSWORD) {
+        window.location.href = REDIRECT_URL;
+        return false;
+      } else {
+        document.getElementById('errorMsg').textContent = "Incorrect password. Please try again.";
+        return false;
+      }
+    }
 
     function togglePassword() {
-      const passwordInput = document.getElementById("password");
-      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-    }
-
-    function toggleMode() {
-      document.body.classList.toggle("light");
-    }
-
-    function checkPassword(event) {
-      event.preventDefault();
-      const enteredPassword = document.getElementById("password").value;
-      if (enteredPassword === correctPassword) {
-        window.location.href = redirectURL;
+      const pwdInput = document.getElementById('password');
+      const toggleBtn = document.querySelector('.toggle-btn');
+      if (pwdInput.type === "password") {
+        pwdInput.type = "text";
+        toggleBtn.textContent = "Hide";
       } else {
-        alert("Incorrect password. Please try again.");
+        pwdInput.type = "password";
+        toggleBtn.textContent = "Show";
       }
     }
   </script>
