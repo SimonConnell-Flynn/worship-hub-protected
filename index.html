@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worship Hub Access</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(to bottom right, #111827, #1f2937);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #1f2937;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    input[type="password"] {
+      padding: 0.75rem;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #3b82f6;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .error {
+      margin-top: 1rem;
+      color: #f87171;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Worship Hub</h1>
+    <form onsubmit="return checkPassword()">
+      <input type="password" id="password" placeholder="Enter password" required />
+      <button type="submit">Enter</button>
+      <div class="error" id="errorMsg"></div>
+    </form>
+    <div class="footer">
+      © Life City Worship Team
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = "romans12:1"; // Replace with your actual password
+    const REDIRECT_URL = "https://www.notion.so/Life-City-Worship-Volunteer-Hub-1e7c88dcb985804ab208eb8181fecb2d?source=copy_link"; // Replace with your Notion page URL
+
+    function checkPassword() {
+      const input = document.getElementById('password').value;
+      if (input === PASSWORD) {
+        window.location.href = REDIRECT_URL;
+        return false;
+      } else {
+        document.getElementById('errorMsg').textContent = "Incorrect password. Please try again.";
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
