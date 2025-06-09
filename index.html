@@ -1,67 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Life City Worship Team Access</title>
-<style>
-  /* Reset & basics */
-  body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background-color: var(--bg);
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  :root {
-    --bg-light: #f9fafb;
-    --text-light: #111827;
-    --input-bg-light: #fff;
-    --border-light: #d1d5db;
-    --btn-bg-light: #3b82f6;
-    --btn-hover-light: #2563eb;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Worship Hub</title>
+  <style>
+    :root {
+      --bg: #121212;
+      --text: #f4f4f4;
+      --card: #1e1e1e;
+      --input: #2c2c2c;
+      --accent: #3399ff;
+    }
 
-    --bg-dark: #121212;
-    --text-dark: #e5e7eb;
-    --input-bg-dark: #1f2937;
-    --border-dark: #374151;
-    --btn-bg-dark: #2563eb;
-    --btn-hover-dark: #3b82f6;
+    [data-theme="light"] {
+      --bg: #f4f4f4;
+      --text: #222;
+      --card: white;
+      --input: #eaeaea;
+      --accent: #0044cc;
+    }
 
-    --bg: var(--bg-light);
-    --text: var(--text-light);
-    --input-bg: var(--input-bg-light);
-    --border: var(--border-light);
-    --btn-bg: var(--btn-bg-light);
-    --btn-hover: var(--btn-hover-light);
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
 
-  body.dark {
-    --bg: var(--bg-dark);
-    --text: var(--text-dark);
-    --input-bg: var(--input-bg-dark);
-    --border: var(--border-dark);
-    --btn-bg: var(--btn-bg-dark);
-    --btn-hover: var(--btn-hover-dark);
-  }
+    .card {
+      background-color: var(--card);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+    }
 
-  .container {
-    background-color: var(--input-bg);
-    padding: 2rem 3rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-  }
+    .logo {
+      width: 120px;
+      height: auto;
+      margin: 0 auto 1.5rem;
+    }
 
-  /* Logo placeholder */
-  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: var(--input);
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .toggle-password {
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .toggle-theme {
+      margin-top: 1rem;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- LOGO SVG -->
+    <div class="logo">
+      <!-- Paste your full SVG content here or use an image like this: -->
+      <<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 720 592" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(1,0,0,1,-180,-244)">
@@ -79,172 +125,43 @@
         </g>
     </g>
 </svg>
-go {
-    margin-bottom: 1rem;
-  }
-
-  input[type="password"] {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    border: 1.5px solid var(--border);
-    background-color: var(--input-bg);
-    color: var(--text);
-    font-size: 1rem;
-    transition: border-color 0.3s;
-  }
-
-  input[type="password"]:focus {
-    border-color: var(--btn-bg);
-    outline: none;
-  }
-
-  .password-container {
-    position: relative;
-  }
-
-  .toggle-password {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--btn-bg);
-    font-weight: 600;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  button.submit-btn {
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    border: none;
-    background: var(--btn-bg);
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
-  }
-
-  button.submit-btn:hover {
-    background: var(--btn-hover);
-  }
-
-  /* Light/Dark toggle button */
-  button#theme-toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: 2px solid var(--btn-bg);
-    border-radius: 8px;
-    padding: 0.25rem 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--btn-bg);
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  button#theme-toggle:hover {
-    background-color: var(--btn-bg);
-    color: white;
-  }
-
-  /* Responsive */
-  @media (max-width: 480px) {
-    .container {
-      padding: 1.5rem 2rem;
-    }
-  }
-</style>
-</head>
-<body>
-  <!-- Light/Dark mode toggle -->
-  <button id="theme-toggle" aria-label="Toggle light and dark mode">Dark Mode</button>
-
-  <div class="container">
-    <!-- Insert your Life City SVG logo here -->
-    <div class="logo">
-      <!-- Example placeholder: -->
-      <!-- 
-      <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="48" stroke="#3b82f6" stroke-width="4"/>
-        <text x="50" y="58" font-size="32" font-family="Poppins, sans-serif" fill="#3b82f6" text-anchor="middle">LC</text>
+!-- <img src="logo.svg" alt="LC Logo" style="width:100%"> -->
+      <svg viewBox="0 0 720 592" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+        <!-- You can paste the full SVG paths here, example: -->
+        <path d="M716,472L779,472C768.066,447.781..." fill="white"/>
       </svg>
-      -->
     </div>
 
-    <form onsubmit="return checkPassword()">
-      <div class="password-container">
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter password"
-          aria-label="Password"
-          required
-        />
-        <button
-          type="button"
-          class="toggle-password"
-          aria-label="Toggle show password"
-          onclick="togglePassword()"
-        >Show</button>
-      </div>
-      <button type="submit" class="submit-btn">Enter</button>
-    </form>
+    <!-- Welcome Text -->
+    <h1>Welcome to The Worship Hub</h1>
+    <p>Your central space for Worship & Production at Life City.</p>
+
+    <!-- Password Input -->
+    <input type="password" id="password" placeholder="Enter password" />
+    <button class="toggle-password" onclick="togglePassword()">Show Password</button>
+
+    <!-- Light/Dark Mode Toggle -->
+    <button class="toggle-theme" onclick="toggleTheme()">Toggle Light/Dark Mode</button>
   </div>
 
-<script>
-  // Toggle password visibility
-  function togglePassword() {
-    const pwInput = document.getElementById('password');
-    const toggleBtn = document.querySelector('.toggle-password');
-    if (pwInput.type === 'password') {
-      pwInput.type = 'text';
-      toggleBtn.textContent = 'Hide';
-    } else {
-      pwInput.type = 'password';
-      toggleBtn.textContent = 'Show';
+  <script>
+    function togglePassword() {
+      const input = document.getElementById("password");
+      const btn = document.querySelector(".toggle-password");
+      if (input.type === "password") {
+        input.type = "text";
+        btn.textContent = "Hide Password";
+      } else {
+        input.type = "password";
+        btn.textContent = "Show Password";
+      }
     }
-  }
 
-  // Simple password check - replace 'yourpassword' with actual password
-  function checkPassword() {
-    const pwInput = document.getElementById('password');
-    const password = pwInput.value;
-    if (password === 'romans12:1') {
-      // Redirect or unlock the page - replace '#' with your actual page or logic
-      window.location.href = 'https://www.notion.so/Life-City-Worship-Volunteer-Hub-1e7c88dcb985804ab208eb8181fecb2d';
-      return false;
-    } else {
-      alert('Incorrect password. Please try again.');
-      pwInput.value = '';
-      return false;
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
     }
-  }
-
-  // Light/Dark mode toggle logic
-  const themeToggle = document.getElementById('theme-toggle');
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  if (currentTheme === 'dark') {
-    document.body.classList.add('dark');
-    themeToggle.textContent = 'Light Mode';
-  }
-
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    if (document.body.classList.contains('dark')) {
-      themeToggle.textContent = 'Light Mode';
-      localStorage.setItem('theme', 'dark');
-    } else {
-      themeToggle.textContent = 'Dark Mode';
-      localStorage.setItem('theme', 'light');
-    }
-  });
-</script>
+  </script>
 </body>
 </html>
